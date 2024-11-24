@@ -5,8 +5,6 @@ import pickle
 import numpy as np
 import re
 import nltk
-# Download only the datasets you need
-nltk.download('punkt')
 from nltk.stem import PorterStemmer
 
 # Load the trained model
