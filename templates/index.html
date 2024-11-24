@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aura-Loom</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            width: 100%;
+            height: 75%;
+            margin: 10;
+            padding: 20px;
+            border: 3px solid black;
+            background-color: #90E0EF;
+            border-radius: 10px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        .form-container h2{
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .form-container textarea{
+            min-width: 100%;
+            max-width: 100%; /* Make it responsive */
+            height: 330px; /* Set a fixed height */
+            max-height: 330px;
+            padding: 10px; /* Add padding for better readability */
+            font-family: Arial, sans-serif; /* Set the font */
+            font-size: 12px; /* Set the font size */
+            background-color: #caf0f8;
+            border: 3px solid white; /* Add a border */
+            border-radius: 5px; /* Add rounded corners */
+            box-sizing: border-box; /* Include padding and border in width/height */
+        }
+        /* .form-container input {
+            width: 100%;
+            height: 75%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        } */
+        .form-container input[type="submit"] {
+            margin-top: 12px;
+            min-width: 100%;
+            height: 50px;
+            border-radius: 5px;
+            background-color: rgb(58 148 166);
+            color: white;
+            border: none;
+            font-size: 25px;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #0077B6;
+            color: black;
+        }
+        .result {
+            font-size: 1.5em;
+            color: black;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+    
+
+</head>
+<body>
+
+
+    <header>
+        <div id="header">
+
+            <div id="name"><span>Aura-</span><span style="color:rgb(76, 87, 235)">Loom</span></div>
+
+            <div id="header_content">
+
+                <ul>
+                    <li><a href="#box1"> Sentiment Analysis</a></li>
+                    <li><a href="#box3">Blog</a></li>
+                    <li><a href="#box6">Services</a></li>
+                    <li><a href="#box2">About</a></li>
+                    <li><a href="#box7">Contact</a></li>
+                </ul>
+                
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+
+        <div id="box1">
+
+            <div id="left">
+
+                <div class="form-container">
+                    <h2>Sentiment Analysis</h2>
+                    <form action="/predict" method="post">
+
+                        <label for="Statement"></label><br>
+                        <textarea id="largeTextInput" name="Statement" rows="10" cols="50" placeholder="Enter your text here..."></textarea><br>
+                        <input type="submit" value="Predict">
+            
+                        <!-- <label for="Statement">Statement:</label>
+                        <input type="text" name="Statement" required>
+                        <input type="submit" value="Predict"> -->
+                    </form>
+            
+                    {% if prediction_text %}
+                    <div class="result">{{ prediction_text }}</div>
+                    {% endif %}
+                </div>
+
+            </div>
+
+            <div id="right"></div>
+
+        </div>
+
+        <div id="box3">
+
+            <div id="a1"><span style="color:black">How It </span> <span style="margin-left:8px; color:rgba(255, 184, 43, 0.948)">Works</span></div>
+
+            <div id="a2">Discover how our sentiment analysis model transforms your input into actionable insights. By combining advanced machine learning techniques with a carefully curated dataset, our model ensures accurate and reliable results in seconds!</div>
+
+            <div id="a3">
+
+                <div class="b1">
+
+                    <div class="boxes">
+                        <div class="c1logo"><i class="fa-brands fa-html5 fa-2xl" style="color: #ffffff;"></i></div> 
+                        <div class="c2name">Input from User</div> 
+                        <div class="c3lorem">Simply type a statement or phrase that you want analyzed. Our intuitive interface makes it easy to get started!</div> 
+                    </div>
+
+                    <div class="boxes">
+                        <div class="c1logo"><i class="fa-brands fa-facebook-f fa-2xl" style="color: #ffffff;"></i></div> 
+                        <div class="c2name">Data Processing</div> 
+                        <div class="c3lorem">Your input is processed by our model, which has been trained on a diverse dataset containing statements and their sentiment labels.</div>
+                    </div>
+
+                    <div class="boxes">
+                        <div class="c1logo"><i class="fa-solid fa-video fa-xl" style="color: #ffffff;"></i></div> 
+                        <div class="c2name">Machine Learning Model</div> 
+                        <div class="c3lorem">Our sentiment analysis model uses advanced natural language processing techniques to evaluate the sentiment of your input.</div>
+                    </div>
+
+                </div>
+
+                <div class="b1">
+
+                    <div class="boxes">
+                        <div class="c1logo"><i class="fa-solid fa-briefcase fa-xl" style="color: #ffffff;"></i></div> 
+                        <div class="c2name">Prediction Generation</div> 
+                        <div class="c3lorem">The model predicts whether the sentiment is positive, negative, or neutral, ensuring results that are both accurate and actionable.</div>
+                    </div>
+                    <div class="boxes">
+                        <div class="c1logo"><i class="fa-solid fa-code fa-xl" style="color: #ffffff;"></i></div> 
+                        <div class="c2name">Results Display</div> 
+                        <div class="c3lorem">The prediction result is sent back to you on the screen instantly, providing immediate feedback.</div>
+                    </div>
+                    <div class="boxes">
+                        <div class="c1logo"><i class="fa-solid fa-phone fa-xl" style="color: #ffffff;"></i></div> 
+                        <div class="c2name">Real-Time Feedback</div> 
+                        <div class="c3lorem">Our system offers fast, efficient, and reliable predictions to keep up with your needs in real time.</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="box6">
+
+            <div id="a1">Other<span style="margin-left:8px; color:rgba(255, 184, 43, 0.948);">Services</span></div>
+
+            <div id="a2">Our expertise goes beyond sentiment analysis. We provide a range of advanced machine learning solutions designed to solve real-world problems. From healthcare to everyday applications, explore some of our key offerings.</div>
+
+            <div id="a3">
+
+                <div class="b1">
+
+                    <div class="images" style="background-image: url('/static/cardiac.jpeg');"></div>
+
+                    <div class="content">
+
+                        <div class="content1"><i class="fa-regular fa-clock fa-sm" style="color: rgba(255, 184, 43, 0.948);"></i> July31, 2023 <span style="color:white; font-weight: 700;">| Category: Healthcare AI</span></div>
+                        <div class="content2">Cardiac Arrest Prediction System</div>
+                        <div class="content3">Our cardiac arrest prediction model leverages patient data to identify potential risks early, enabling timely medical intervention. This system provides critical support for healthcare professionals.</div>
+                        <div class="content4">Read More</div>
+
+                    </div>
+
+                </div>
+
+                <div class="b1">
+
+                    <div class="images" style="background-image: url('/static/customer.png');"></div>
+
+                    <div class="content">
+
+                        <div class="content1"><i class="fa-regular fa-clock fa-sm" style="color: rgba(255, 184, 43, 0.948);"></i> July31, 2023 <span style="color:white; font-weight: 700;">| Category: Business Analytics</span></div>
+                        <div class="content2">Customer Feedback Analysis Tool</div>
+                        <div class="content3">Analyze customer feedback from multiple channels to identify trends, detect satisfaction levels, and improve business outcomes. A powerful tool for enhancing customer experience.</div>
+                        <div class="content4">Read More</div>
+
+                    </div>
+
+                </div>
+
+                <div class="b1">
+
+                    <div class="images" style="background-image: url('/static/detect.jpeg');"></div>
+
+                    <div class="content">
+
+                        <div class="content1"><i class="fa-regular fa-clock fa-sm" style="color: rgba(255, 184, 43, 0.948);"></i> July31, 2023 <span style="color:white; font-weight: 700;">| Category: Cybersecurity</span></div>
+                        <div class="content2">Spam Detection and Filtering System</div>
+                        <div class="content3">Our spam detection system accurately identifies and filters unwanted emails and messages, ensuring secure and clutter-free communication for individuals and businesses.</div>
+                        <div class="content4">Read More</div>
+
+                    </div>
+
+                </div>
+          
+            </div>
+
+        </div>
+
+        <div id="box2">
+
+            <div id="left"><div id="leftinner"></div></div>
+
+            <div id="right">
+
+                <div id="a1"><span>About</span><span style="margin-left:8px; color:rgba(255, 184, 43, 0.948)">Us</span></div>
+
+                <div id="a2">Our sentiment analysis model is a cutting-edge machine learning solution designed to interpret the emotional tone of text inputs. Whether it’s a tweet, product review, customer feedback, or any textual data, our system classifies the sentiment as positive, negative, or neutral with remarkable accuracy. By leveraging natural language processing (NLP) techniques, our model bridges the gap between raw textual data and actionable insights, making complex sentiment detection easy and accessible. <br><br>
+
+                    Our model is powered by a robust dataset, trained to recognize patterns, tone, and context in various forms of text. Users simply input a statement into the system, and within seconds, the model processes it and delivers the sentiment classification. This quick and efficient process helps businesses, researchers, and individuals save time while gaining a deep understanding of their textual data. <br><br>
+                    
+                    Understanding sentiment is crucial in today’s data-driven world. For businesses, it enables better customer satisfaction by analyzing reviews and feedback. For social media monitoring, it helps identify public opinions and trends. Our model is also valuable in educational and research settings, where it can assist in analyzing survey responses, essays, and other forms of textual content. By providing real-time insights, our system empowers users to make informed decisions. <br><br>
+                    
+                    We believe in making technology that works for everyone. Our sentiment analysis tool is user-friendly, fast, and reliable, designed to cater to both beginners and advanced users. Whether you’re a small business owner, a data analyst, or a student, our solution is tailored to meet your unique needs and drive meaningful results.</div>
+
+            </div>
+
+        </div>
+
+
+        <div id="box7">
+
+            <div id="a1"> <span style="color:black">Contact</span>  <span style="margin-left:8px; color:rgba(255, 184, 43, 0.948)">Us</span></div>
+
+            <div id="a2">We’d love to hear from you! Whether you have questions about our sentiment analysis model, need assistance, or want to explore collaborations, feel free to reach out. Connect with us on LinkedIn or Instagram, or drop us a message using the contact information provided below. Let’s work together to bring innovation to life!</div>
+
+            <div class="contact-container">
+                <!-- Member 1 -->
+                <div class="contact-card">
+                    <h2>Aadira Rajeev</h2>
+                    <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/member1" target="_blank">Profile</a></p>
+                    <p><strong>Instagram:</strong> <a href="https://instagram.com/member1" target="_blank">@member1</a></p>
+                    <p><strong>Phone:</strong> <span style="color:white">Contact</span></p>
+                    <p><strong>College ID:</strong> <span style="color:white">Contact</span></p>
+                </div>
+    
+                <!-- Member 2 -->
+                <div class="contact-card">
+                    <h2>Apratim Rashmi</h2>
+                    <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/member2" target="_blank">Profile</a></p>
+                    <p><strong>Instagram:</strong> <a href="https://instagram.com/member2" target="_blank">@member2</a></p>
+                    <p><strong>Phone:</strong> <span style="color:white">Contact</span></p>
+                    <p><strong>College ID:</strong> <span style="color:white">Contact</span></p>
+                </div>
+    
+                <!-- Member 3 -->
+                <div class="contact-card">
+                    <h2>Rishabh Nayak</h2>
+                    <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/member3" target="_blank">Profile</a></p>
+                    <p><strong>Instagram:</strong> <a href="https://instagram.com/member3" target="_blank">@member3</a></p>
+                    <p><strong>Phone:</strong> <span style="color:white">Contact</span></p>
+                    <p><strong>College ID:</strong> <span style="color:white">Contact</span></p>
+                </div>
+    
+                <!-- Member 4 -->
+                <div class="contact-card">
+                    <h2>Atharv Tripathi</h2>
+                    <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/member4" target="_blank">Profile</a></p>
+                    <p><strong>Instagram:</strong> <a href="https://instagram.com/member4" target="_blank">@member4</a></p>
+                    <p><strong>Phone:</strong> <span style="color:white">Contact</span></p>
+                    <p><strong>College ID:</strong> <span style="color:white">Contact</span></p>
+                </div>
+    
+                <!-- Member 5 -->
+                <div class="contact-card">
+                    <h2>Shaswata Mandal</h2>
+                    <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/member5" target="_blank">Profile</a></p>
+                    <p><strong>Instagram:</strong> <a href="https://instagram.com/member5" target="_blank">@member5</a></p>
+                    <p><strong>Phone:</strong> <span style="color:white">Contact</span></p>
+                    <p><strong>College ID:</strong> <span style="color:white">Contact</span></p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <div id="footer">Copyright &copy; 2024 Aura-Loom | All Rights Reserved</div>
+    </footer>
+
+    
+</body>
+</html>
