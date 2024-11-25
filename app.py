@@ -7,6 +7,7 @@ import re
 import nltk
 import gzip
 import requests
+import os
 from nltk.stem import PorterStemmer
 
 def download_file(url, output_path):
