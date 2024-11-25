@@ -6,10 +6,28 @@ import numpy as np
 import re
 import nltk
 import gzip
+import requests
 from nltk.stem import PorterStemmer
 
+def download_file(url, output_path):
+    """Downloads a file from the specified URL to the given path."""
+    response = requests.get(url, stream=True)
+    response.raise_for_status()  # Raise an error for bad responses
+    with open(output_path, 'wb') as file:
+        for chunk in response.iter_content(chunk_size=8192):
+            file.write(chunk)
+
+model_url = "https://github.com/Shaswata-Mandal/sentiment_analysis/releases/download/v1.0/model.pkl.gz"
+
+# Local file paths
+model_path = "model.pkl.gz"
+
+# Download the model if it doesn't already exist
+if not os.path.exists(model_path):
+    print(f"Downloading {model_path}...")
+    download_file(model_url, model_path)
+
 # Load the trained model
-model_path = 'model.pkl.gz'
 with gzip.open(model_path, 'rb') as file:
     model = pickle.load(file)
 
