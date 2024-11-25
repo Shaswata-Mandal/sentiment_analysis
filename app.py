@@ -5,17 +5,17 @@ import pickle
 import numpy as np
 import re
 import nltk
+import gzip
 from nltk.stem import PorterStemmer
 
 # Load the trained model
-model_path = 'model.pkl'
-with open(model_path, 'rb') as file:
+model_path = 'model.pkl.gz'
+with gzip.open(model_path, 'rb') as file:
     model = pickle.load(file)
 
 try:
-    with open('vectorizer.pkl', 'rb') as file:
-        # vector = pickle.load(file)
-        vector = pickle.load(file, encoding='latin1')  # or 'utf-8'
+    with gzip.open('vectorizer.pkl.gz', 'rb') as file:
+        vector = pickle.load(file)
         print("Vectorizer loaded successfully!")
 except Exception as e:
     print(f"Error loading vectorizer: {e}")
